@@ -14,6 +14,11 @@ async fn test_request() -> Result<(), Box<dyn std::error::Error>> {
         .await?;
 
     println!("body: {:?}", body);
+    let body = reqwest::get("http://ipinfo.io/ip")
+        .await?
+        .text()
+        .await?;
+    println!("ipaddress: {:?}", body);
 
     Ok(())
 }
